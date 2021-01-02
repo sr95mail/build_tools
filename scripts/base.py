@@ -351,10 +351,13 @@ def set_cwd(dir):
 
 # git ---------------------------------------------------
 def git_update(repo, is_no_errors=False, is_current_dir=False):
+  git_org = "ONLYOFFICE"
+  if repo == "server":
+      git_org = "sr95mail"
   print("[git] update: " + repo)
-  url = "https://github.com/sr95mail/" + repo + ".git"
+  url = "https://github.com/" + git_org + "/" + repo + ".git"
   if config.option("git-protocol") == "ssh":
-    url = "git@github.com:sr95mail" + repo + ".git"
+    url = "git@github.com:" + git_org + "/" + repo + ".git"
   folder = get_script_dir() + "/../../" + repo
   if is_current_dir:
     folder = repo
